@@ -22,6 +22,8 @@ function populateChart(data) {
   const line = document.querySelector('#canvas').getContext('2d');
   const bar = document.querySelector('#canvas2').getContext('2d');
 
+  console.log(data);
+  
   const labels = data.map(({ day }) => {
     const date = new Date(day);
 
