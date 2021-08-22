@@ -12,15 +12,15 @@ router.get("/api/workouts", (req, res) => {
 });
 
 router.get("/api/workouts/range", (req, res) => {
-    db.aggregate([{
-        $addFields: {
-            totalDuration: { $sum: "$exercises.duration"}
-        }
-    }])
-        .sort({ date: -1 })
+    // db.aggregate([{
+    //     $addFields: {
+    //         totalDuration: { $sum: "$exercises.duration" }
+    //     }
+    // }])
+    db.find({})
+        .sort({ day: -1 })
         .limit(7)
         .then(dbWorkout => {
-            console.log(dbWorkout);
             res.json(dbWorkout);
         })
         .catch(err => {
